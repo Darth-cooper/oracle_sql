@@ -1,0 +1,8 @@
+trunc(to_char(0.2424),5) => 0.2424
+trunc(to_char(-0.242),5) => -0.2424 
+
+
+DECODE(SUBSTR(TO_CHAR(bs.bonus),1,1), '.','0') || TO_CHAR(bs.bonus)
+
+
+
