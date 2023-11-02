@@ -58,6 +58,17 @@ select to_date('2005-01-01 13:14:20','yyyy-MM-dd HH24:mi:ss') from dual;
 
 
 Oracle 通過出生日期計算年齡
+===========================================================
 select TRUNC((to_char(sysdate, 'yyyyMMdd') - to_char(birth, 'yyyyMMdd')) /
              10000) as age
 from mytable
+
+
+
+
+西元年轉民國年
+===========================================================
+case when length( to_number(substr(a.tdate ,1 ,4)) -1911 ) = 2 
+           then  '0'||to_number(substr(a.tdate ,1 ,4)) - 1911 || substr(a.tdate ,5 ,2) || substr(a.tdate ,7 ,2)
+     else   to_number(substr(a.tdate ,1 ,4)) - 1911 || substr(a.tdate ,5 ,2) || substr(a.tdate ,7 ,2)
+end roc_date 
