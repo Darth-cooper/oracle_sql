@@ -51,7 +51,7 @@ select to_date('2007-06-28 19:51:20','yyyy-MM-dd HH:mm:ss') from dual;
 2、分鐘的mm修改為mi。
 
 24 小時的形式顯示出來要用 HH24
-
+===========================================================
 select to_char(sysdate,'yyyy-MM-dd HH24:mi:ss') from dual;
 
 select to_date('2005-01-01 13:14:20','yyyy-MM-dd HH24:mi:ss') from dual;
@@ -72,3 +72,15 @@ case when length( to_number(substr(a.tdate ,1 ,4)) -1911 ) = 2
            then  '0'||to_number(substr(a.tdate ,1 ,4)) - 1911 || substr(a.tdate ,5 ,2) || substr(a.tdate ,7 ,2)
      else   to_number(substr(a.tdate ,1 ,4)) - 1911 || substr(a.tdate ,5 ,2) || substr(a.tdate ,7 ,2)
 end roc_date 
+
+每个月的第一天
+===========================================================
+select dateadd(dd,-datepart(dd,getdate())+1,getdate())
+
+第个月的最后一天
+===========================================================
+select dateadd(dd,-datepart(dd,getdate()),dateadd(mm,1,getdate()))
+
+本月的天数
+===========================================================
+select datediff(dd,getdate(),dateadd(mm,1,getdate()))
